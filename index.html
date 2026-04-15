@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EL SANTO · CUMPLEAÑOS Y ANIVERSARIOS</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dark: #8b6914;
+    --cream: #faf6ee;
+    --parchment: #f0e8d0;
+    --ink: #1a0f00;
+    --ink-light: #3d2b00;
+    --red-feast: #8b1a1a;
+    --blue-hand: #1a3a6b;
+    --shadow: rgba(26,15,0,0.18);
+    --border: #c9a84c55;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #1a0f00;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, #2d1a00 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, #1f1200 0%, transparent 60%);
+    min-height: 100vh;
+    font-family: 'Crimson Text', Georgia, serif;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px 40px;
+  }
+
+  /* HEADER */
+  .site-header {
+    text-align: center;
+    margin-bottom: 28px;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  .site-header .ornament {
+    color: var(--gold);
+    font-size: 1.4rem;
+    letter-spacing: 6px;
+    opacity: 0.7;
+  }
+
+  .site-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 5vw, 3rem);
+    font-weight: 900;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 1.1;
+    text-shadow: 0 2px 12px rgba(201,168,76,0.4), 0 0 40px rgba(201,168,76,0.15);
+    margin: 6px 0 4px;
+  }
+
+  .site-header .subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+    opacity: 0.8;
+    letter-spacing: 2px;
+  }
+
+  .header-line {
+    width: 80%;
+    max-width: 500px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 10px auto;
+  }
+
+  /* NAV */
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 18px;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  .nav-btn {
+    background: linear-gradient(135deg, #2d1a00, #1a0f00);
+    border: 1px solid var(--gold-dark);
+    color: var(--gold-light);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    flex-shrink: 0;
+  }
+
+  .nav-btn:hover {
+    background: linear-gradient(135deg, #3d2600, #2d1a00);
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: scale(1.08);
+    box-shadow: 0 3px 14px rgba(201,168,76,0.3);
+  }
+
+  .month-title-display {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 5vw, 2.2rem);
+    font-weight: 700;
+    color: var(--gold-light);
+    text-align: center;
+    min-width: 240px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 8px rgba(201,168,76,0.3);
+  }
+
+  .year-tag {
+    font-family: 'Crimson Text', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    opacity: 0.7;
+    display: block;
+    letter-spacing: 3px;
+  }
+
+  /* CALENDAR WRAPPER */
+  .calendar-wrap {
+    background: var(--cream);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    border: 2px solid var(--gold-dark);
+    border-radius: 4px;
+    box-shadow:
+      0 0 0 6px #1a0f00,
+      0 0 0 7px var(--gold-dark),
+      0 8px 40px rgba(0,0,0,0.6);
+    width: 100%;
+    max-width: 1100px;
+    overflow: hidden;
+  }
+
+  /* MONTH HEADER BAND */
+  .month-header-band {
+    background: linear-gradient(135deg, #6b1a1a 0%, #8b2020 40%, #6b1a1a 100%);
+    padding: 10px 20px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid var(--gold-dark);
+  }
+
+  .month-header-band h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    color: var(--cream);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    text-transform: capitalize;
+  }
+
+  .month-header-band .year-label {
+    color: var(--gold-light);
+    margin-left: 12px;
+    font-family: 'Crimson Text', serif;
+    font-size: 1.3rem;
+    opacity: 0.85;
+  }
+
+  /* DAY HEADERS */
+  .day-headers {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: var(--parchment);
+    border-bottom: 1px solid var(--gold-dark);
+  }
+
+  .day-header {
+    text-align: center;
+    padding: 8px 4px 6px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(0.65rem, 1.8vw, 0.88rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--ink-light);
+    border-right: 1px solid var(--border);
+  }
+
+  .day-header:last-child { border-right: none; }
+  .day-header.domingo { color: var(--red-feast); }
+
+  /* GRID */
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-top: 1px solid var(--border);
+  }
+
+  /* CELL */
+  .day-cell {
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 5px 6px 6px;
+    min-height: clamp(72px, 11vw, 105px);
+    background: var(--cream);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    transition: background 0.15s;
+  }
+
+  .day-cell:hover { background: #f5edda; }
+  .day-cell:nth-child(7n) { border-right: none; }
+  .day-cell.empty { background: #f0e8d0aa; }
+  .day-cell.domingo .day-num { color: var(--red-feast); }
+  .day-cell.today {
+    background: #fff8e8;
+    box-shadow: inset 0 0 0 2px var(--gold-dark);
+  }
+
+  .day-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 2.8vw, 1.5rem);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .hand-note {
+    font-family: 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(0.58rem, 1.6vw, 0.78rem);
+    color: var(--blue-hand);
+    line-height: 1.2;
+    word-break: break-word;
+    margin-top: 2px;
+  }
+
+  .hand-note .cross {
+    display: inline;
+    color: #555;
+    font-style: normal;
+  }
+
+  /* Today badge */
+  .today-badge {
+    position: absolute;
+    top: 3px;
+    right: 4px;
+    width: 7px;
+    height: 7px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 4px var(--gold);
+  }
+
+  /* FOOTER */
+  .page-footer {
+    margin-top: 22px;
+    text-align: center;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    color: var(--gold);
+    opacity: 0.5;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 12px 6px 30px; }
+    .day-cell { min-height: 58px; padding: 3px 3px 4px; }
+    .hand-note { font-size: 0.52rem; }
+    .day-num { font-size: 0.95rem; }
+  }
+
+  @media (max-width: 380px) {
+    .day-cell { min-height: 48px; }
+    .hand-note { font-size: 0.46rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="ornament">✦ ✦ ✦</div>
+  <h1>El Santo</h1>
+  <div class="subtitle">Cumpleaños &amp; Aniversarios</div>
+  <div class="header-line"></div>
+</header>
+
+<div class="nav-row">
+  <button class="nav-btn" id="btnPrev" aria-label="Mes anterior">&#8592;</button>
+  <div class="month-title-display">
+    <span id="navMonthName"></span>
+    <span class="year-tag" id="navYear"></span>
+  </div>
+  <button class="nav-btn" id="btnNext" aria-label="Mes siguiente">&#8594;</button>
+</div>
+
+<div class="calendar-wrap">
+  <div class="month-header-band">
+    <h2 id="headerMonthName"></h2>
+    <span class="year-label" id="headerYear"></span>
+  </div>
+  <div class="day-headers">
+    <div class="day-header">Lunes</div>
+    <div class="day-header">Martes</div>
+    <div class="day-header">Miércoles</div>
+    <div class="day-header">Jueves</div>
+    <div class="day-header">Viernes</div>
+    <div class="day-header">Sábado</div>
+    <div class="day-header domingo">Domingo</div>
+  </div>
+  <div class="calendar-grid" id="calendarGrid"></div>
+</div>
+
+<footer class="page-footer">Web de Javi · _TJ</footer>
+
+<script>
+// ─────────────────────────────────────────────
+// DATA: all hand-written notes from photos
+// Key format: "MM-DD" (month 1-based, no year)
+// Values: array of strings; "+" becomes ✝
+// Notes: exclude "Receta" and "Lotería"
+// ─────────────────────────────────────────────
+const NOTES = {
+  // ── ENERO ──
+  "01-01": ["ÑENE"],
+  "01-02": ["JUANIN"],
+  "01-03": ["ANA"],
+  "01-07": ["VICTORIA"],
+  "01-08": ["ELENA"],
+  "01-09": ["FELIX"],
+  "01-10": ["MARTA", "OLIVER"],
+  "01-13": ["JOEY"],
+  "01-14": ["✝ TITI"],
+  "01-15": ["MARGARITAS", "NOEL", "EDU", "ANIVERSARIO"],
+  "01-17": ["✝ JUAN"],
+  "01-18": ["✝ PAPÁ"],
+  "01-19": ["AMAZON 50€"],
+  "01-21": ["GUÍA"],
+  "01-23": ["CAMELIN", "MEGUI"],
+  "01-26": ["MARINA"],
+  // ── FEBRERO ──
+  "02-01": ["GELI"],
+  "02-02": ["LAUREANA"],
+  "02-03": ["SARI", "MC CAAR"],
+  "02-04": ["MARIGEN"],
+  "02-06": ["NANDO"],
+  "02-09": ["PAPÁ", "MARISA JUMO"],
+  "02-11": ["✝ RAMÓN"],
+  "02-16": ["MARISA"],
+  "02-23": ["MELIA"],
+  "02-24": ["CLART"],
+  "02-25": ["✝ PEPE"],
+  "02-28": ["MARISA TAHES"],
+  // ── MARZO ──
+  "03-01": ["PEPE"],
+  "03-02": ["JOVI"],
+  "03-03": ["CELIA"],
+  "03-12": ["IKER"],
+  "03-14": ["ÁLVARO"],
+  "03-16": ["MARISOSE 71"],
+  "03-17": ["LÍA"],
+  "03-18": ["J. FERNANDO"],
+  "03-21": ["ISI", "✝ ALFREDO"],
+  "03-25": ["GÜELIN"],
+  // ── ABRIL ──
+  "04-03": ["FERNANDA"],
+  "04-04": ["ALBERTO"],
+  "04-05": ["CHAMELA"],
+  "04-06": ["LUIS"],
+  "04-11": ["HUGO"],
+  "04-13": ["CARMEN"],
+  "04-14": ["NEREA"],
+  "04-17": ["ROSI"],
+  "04-20": ["JOSE BODOLÓN"],
+  "04-22": ["MIGUEL"],
+  "04-23": ["MARINA POLARES"],
+  // ── MAYO ──
+  "05-01": ["TITI 86"],
+  "05-02": ["JUAN"],
+  "05-05": ["Mª ESTHER 85"],
+  "05-19": ["✝ NANDO", "✝ MANOCO"],
+  "05-21": ["MADELEIN"],
+  "05-22": ["LAURA"],
+  "05-24": ["CARMEN"],
+  "05-25": ["TONI 95"],
+  "05-29": ["ANIVERSARIO"],
+  "05-31": ["COMUNIÓN"],
+  // ── JUNIO ──
+  "06-01": ["MONCHU"],
+  "06-02": ["TÍO PACO 83"],
+  "06-06": ["✝ NANDA"],
+  "06-15": ["SOCORRO"],
+  "06-16": ["MANOLITA"],
+  "06-17": ["MARTINA"],
+  "06-29": ["ZUZI"],
+  // ── JULIO ──
+  "07-05": ["RICARDO"],
+  "07-07": ["RAMÓN 92"],
+  "07-14": ["OCAYA"],
+  "07-15": ["MARIA"],
+  "07-17": ["St. MARIGEN"],
+  "07-20": ["DIEGO GARCÍA"],
+  "07-26": ["JAVIER"],
+  "07-30": ["RAFA LLES"],
+  "07-31": ["MICHAEL"],
+  // ── AGOSTO ──
+  "08-10": ["SILVIA", "EVA"],
+  "08-19": ["✝ PEPE"],
+  "08-24": ["TERESA"],
+  "08-26": ["FROKES GUELITA"],
+  "08-31": ["MARINA SORDO"],
+  // ── SEPTIEMBRE ──
+  "09-01": ["ANIVERSARIO NEGUI"],
+  "09-07": ["LAURI"],
+  "09-10": ["✝ MELIA"],
+  "09-11": ["TOMESIN", "TONI 94"],
+  "09-12": ["SR. GUELITA"],
+  "09-17": ["ALDA"],
+  "09-20": ["PORT"],
+  "09-21": ["NAYA"],
+  "09-23": ["PIN"],
+  "09-27": ["GERARDO"],
+  // ── OCTUBRE ──
+  "10-02": ["ANIVERSARIO", "MARINA"],
+  "10-07": ["JOSE LUIS"],
+  "10-08": ["CAMILO"],
+  "10-14": ["PABLO"],
+  "10-15": ["TERE"],
+  "10-16": ["✝ MANUEL"],
+  "10-18": ["ALESSANDRA"],
+  "10-19": ["ST. LAURA", "✝ ROXIU"],
+  "10-25": ["HAYDEE"],
+  "10-26": ["VITI"],
+  "10-31": ["MANUEL"],
+  // ── NOVIEMBRE ──
+  "11-01": ["JESSICA"],
+  "11-05": ["LAURA"],
+  "11-07": ["✝ PILI"],
+  "11-08": ["MARINA (LULA)"],
+  "11-10": ["JUAN CARLOS"],
+  "11-11": ["MARISINA"],
+  "11-12": ["VÍCTOR"],
+  "11-14": ["LAUREANA"],
+  "11-16": ["IVÁN"],
+  "11-18": ["SARA"],
+  "11-19": ["✝ JOSEFINA"],
+  "11-26": ["OLGA"],
+  "11-28": ["MELIA PINIARE"],
+  // ── DICIEMBRE ──
+  "12-03": ["GEMA"],
+  "12-04": ["LUISINA"],
+  "12-05": ["JOSEFINA"],
+  "12-13": ["GUELITA"],
+  "12-16": ["EGRELIO", "✝ TERESITA"],
+  "12-18": ["ALBA"],
+  "12-19": ["✝ MELDE"],
+  "12-21": ["JOSE NÚÑEZ"],
+  "12-23": ["GARCÍA"],
+  "12-31": ["ALMA"],
+};
+
+// Clean up empty-string entries
+Object.keys(NOTES).forEach(k => {
+  NOTES[k] = NOTES[k].filter(n => n.trim() !== "");
+  if (NOTES[k].length === 0) delete NOTES[k];
+});
+
+// ─────────────────────────────────────────────
+// CALENDAR LOGIC
+// ─────────────────────────────────────────────
+const MONTHS_ES = [
+  "Enero","Febrero","Marzo","Abril","Mayo","Junio",
+  "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
+];
+
+let currentDate = new Date();
+let viewMonth = currentDate.getMonth(); // 0-based
+let viewYear  = currentDate.getFullYear();
+
+function pad2(n){ return String(n).padStart(2,'0'); }
+
+function getDayOfWeek(year, month, day){
+  // Returns 0=Mon … 6=Sun (ISO)
+  const d = new Date(year, month, day);
+  return (d.getDay() + 6) % 7;
+}
+
+function daysInMonth(year, month){
+  return new Date(year, month+1, 0).getDate();
+}
+
+function renderCalendar(){
+  const grid = document.getElementById('calendarGrid');
+  grid.innerHTML = '';
+
+  const monthName = MONTHS_ES[viewMonth];
+  document.getElementById('navMonthName').textContent = monthName;
+  document.getElementById('navYear').textContent = viewYear;
+  document.getElementById('headerMonthName').textContent = monthName;
+  document.getElementById('headerYear').textContent = viewYear;
+
+  const totalDays = daysInMonth(viewYear, viewMonth);
+  const firstDow  = getDayOfWeek(viewYear, viewMonth, 1); // 0=Mon
+  const today     = new Date();
+  const todayDay  = (today.getFullYear()===viewYear && today.getMonth()===viewMonth) ? today.getDate() : -1;
+
+  // Empty cells before 1st
+  for(let i=0; i<firstDow; i++){
+    const empty = document.createElement('div');
+    empty.className = 'day-cell empty';
+    grid.appendChild(empty);
+  }
+
+  for(let d=1; d<=totalDays; d++){
+    const dow = getDayOfWeek(viewYear, viewMonth, d); // 0=Mon 6=Sun
+    const cell = document.createElement('div');
+    cell.className = 'day-cell' + (dow===6 ? ' domingo' : '') + (d===todayDay ? ' today' : '');
+
+    // Day number
+    const numEl = document.createElement('div');
+    numEl.className = 'day-num';
+    numEl.textContent = d;
+    cell.appendChild(numEl);
+
+    if(d===todayDay){
+      const badge = document.createElement('div');
+      badge.className = 'today-badge';
+      cell.appendChild(badge);
+    }
+
+    // Notes
+    const key = pad2(viewMonth+1)+'-'+pad2(d);
+    if(NOTES[key]){
+      NOTES[key].forEach(note => {
+        if(!note) return;
+        const noteEl = document.createElement('div');
+        noteEl.className = 'hand-note';
+        // Replace ✝ with styled span
+        noteEl.innerHTML = note.replace(/✝/g, '<span class="cross">✝</span>');
+        cell.appendChild(noteEl);
+      });
+    }
+
+    grid.appendChild(cell);
+  }
+
+  // Fill trailing cells to complete last row
+  const used = firstDow + totalDays;
+  const remainder = used % 7;
+  if(remainder !== 0){
+    for(let i=0; i<7-remainder; i++){
+      const empty = document.createElement('div');
+      empty.className = 'day-cell empty';
+      grid.appendChild(empty);
+    }
+  }
+}
+
+document.getElementById('btnPrev').addEventListener('click', ()=>{
+  viewMonth--;
+  if(viewMonth < 0){ viewMonth = 11; viewYear--; }
+  renderCalendar();
+});
+
+document.getElementById('btnNext').addEventListener('click', ()=>{
+  viewMonth++;
+  if(viewMonth > 11){ viewMonth = 0; viewYear++; }
+  renderCalendar();
+});
+
+renderCalendar();
+</script>
+</body>
+</html>
