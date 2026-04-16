@@ -350,11 +350,10 @@ const NOTES = {
   "01-09": ["FELIX"],
   "01-10": ["MARTA", "OLIVER"],
   "01-13": ["JOEY"],
-  "01-14": ["✝ TITI"],
+  "01-14": ["✝️ TITI"],
   "01-15": ["MARGARITAS", "NOEL", "EDU", "ANIVERSARIO"],
-  "01-17": ["✝ JUAN"],
-  "01-18": ["✝ PAPÁ"],
-  "01-19": ["AMAZON 50€"],
+  "01-17": ["✝️ JUAN"],
+  "01-18": ["✝️ PAPÁ"],
   "01-21": ["GUÍA"],
   "01-23": ["CAMELIN", "MEGUI"],
   "01-26": ["MARINA"],
@@ -365,11 +364,11 @@ const NOTES = {
   "02-04": ["MARIGEN"],
   "02-06": ["NANDO"],
   "02-09": ["PAPÁ", "MARISA JUMO"],
-  "02-11": ["✝ RAMÓN"],
+  "02-11": ["✝️ RAMÓN"],
   "02-16": ["MARISA"],
   "02-23": ["MELIA"],
   "02-24": ["CLART"],
-  "02-25": ["✝ PEPE"],
+  "02-25": ["✝️ PEPE"],
   "02-28": ["MARISA TAHES"],
   // ── MARZO ──
   "03-01": ["PEPE"],
@@ -377,10 +376,10 @@ const NOTES = {
   "03-03": ["CELIA"],
   "03-12": ["IKER"],
   "03-14": ["ÁLVARO"],
-  "03-16": ["MARISOSE 71"],
   "03-17": ["LÍA"],
   "03-18": ["J. FERNANDO"],
-  "03-21": ["ISI", "✝ ALFREDO"],
+  "03-21": ["ISI", "✝️ ALFREDO"],
+  "03-24": ["MARIA JOSE 71"],
   "03-25": ["GÜELIN"],
   // ── ABRIL ──
   "04-03": ["FERNANDA"],
@@ -393,22 +392,21 @@ const NOTES = {
   "04-17": ["ROSI"],
   "04-20": ["JOSE BODOLÓN"],
   "04-22": ["MIGUEL"],
-  "04-23": ["MARINA POLARES"],
+  "04-23": ["MARINA PALACIOS"],
   // ── MAYO ──
   "05-01": ["TITI 86"],
   "05-02": ["JUAN"],
   "05-05": ["Mª ESTHER 85"],
-  "05-19": ["✝ NANDO", "✝ MANOCO"],
+  "05-19": ["✝️ NANDO", "✝️ MANOCO"],
   "05-21": ["MADELEIN"],
   "05-22": ["LAURA"],
   "05-24": ["CARMEN"],
   "05-25": ["TONI 95"],
   "05-29": ["ANIVERSARIO"],
-  "05-31": ["COMUNIÓN"],
   // ── JUNIO ──
   "06-01": ["MONCHU"],
   "06-02": ["TÍO PACO 83"],
-  "06-06": ["✝ NANDA"],
+  "06-06": ["✝️ NANDA"],
   "06-15": ["SOCORRO"],
   "06-16": ["MANOLITA"],
   "06-17": ["MARTINA"],
@@ -425,14 +423,14 @@ const NOTES = {
   "07-31": ["MICHAEL"],
   // ── AGOSTO ──
   "08-10": ["SILVIA", "EVA"],
-  "08-19": ["✝ PEPE"],
+  "08-19": ["✝️ PEPE"],
   "08-24": ["TERESA"],
-  "08-26": ["FROKES GUELITA"],
+  "08-26": ["FLORES GÜELITA"],
   "08-31": ["MARINA SORDO"],
   // ── SEPTIEMBRE ──
   "09-01": ["ANIVERSARIO NEGUI"],
   "09-07": ["LAURI"],
-  "09-10": ["✝ MELIA"],
+  "09-10": ["✝️ MELIA"],
   "09-11": ["TOMESIN", "TONI 94"],
   "09-12": ["SR. GUELITA"],
   "09-17": ["ALDA"],
@@ -446,16 +444,16 @@ const NOTES = {
   "10-08": ["CAMILO"],
   "10-14": ["PABLO"],
   "10-15": ["TERE"],
-  "10-16": ["✝ MANUEL"],
+  "10-16": ["✝️ MANUEL"],
   "10-18": ["ALESSANDRA"],
-  "10-19": ["ST. LAURA", "✝ ROXIU"],
+  "10-19": ["ST. LAURA", "✝️ ROXIU"],
   "10-25": ["HAYDEE"],
   "10-26": ["VITI"],
   "10-31": ["MANUEL"],
   // ── NOVIEMBRE ──
   "11-01": ["JESSICA"],
   "11-05": ["LAURA"],
-  "11-07": ["✝ PILI"],
+  "11-07": ["✝️ PILI"],
   "11-08": ["MARINA (LULA)"],
   "11-10": ["JUAN CARLOS"],
   "11-11": ["MARISINA"],
@@ -463,7 +461,7 @@ const NOTES = {
   "11-14": ["LAUREANA"],
   "11-16": ["IVÁN"],
   "11-18": ["SARA"],
-  "11-19": ["✝ JOSEFINA"],
+  "11-19": ["✝️ JOSEFINA"],
   "11-26": ["OLGA"],
   "11-28": ["MELIA PINIARE"],
   // ── DICIEMBRE ──
@@ -471,9 +469,9 @@ const NOTES = {
   "12-04": ["LUISINA"],
   "12-05": ["JOSEFINA"],
   "12-13": ["GUELITA"],
-  "12-16": ["EGRELIO", "✝ TERESITA"],
+  "12-16": ["EGRELIO", "✝️ TERESITA"],
   "12-18": ["ALBA"],
-  "12-19": ["✝ MELDE"],
+  "12-19": ["✝️ MELDI"],
   "12-21": ["JOSE NÚÑEZ"],
   "12-23": ["GARCÍA"],
   "12-31": ["ALMA"],
@@ -555,8 +553,8 @@ function renderCalendar(){
         if(!note) return;
         const noteEl = document.createElement('div');
         noteEl.className = 'hand-note';
-        // Replace ✝ with styled span
-        noteEl.innerHTML = note.replace(/✝/g, '<span class="cross">✝</span>');
+        // Render note as plain text (crosses are already ✝️ emoji)
+        noteEl.textContent = note;
         cell.appendChild(noteEl);
       });
     }
